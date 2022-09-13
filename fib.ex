@@ -1,6 +1,13 @@
-defmodule Play do
-    def play do
-        IO.puts "Playing"
+# run these commands in the terminal
+# pid = spawn(S, :greet, []) - to start the process
+# send(pid, :greetings) - to send a message to the process
+
+defmodule S do
+    def greet do
+        receive do
+            :greetings -> IO.puts "HELLO"
+        end
+        greet
     end
 end
 
