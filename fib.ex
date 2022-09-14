@@ -3,11 +3,18 @@
 # send(pid, :greetings) - to send a message to the process
 
 defmodule S do
-    def greet do
+    def greet() do
         receive do
-            :greetings -> IO.puts "HELLO"
+            :greetings -> 
+                IO.puts "HELLO WORLD"
+                greet()
+            
+            :reload -> 
+                IO.puts "RELOADING"
+                S.greet()
+
+            _ -> IO.puts "I don't understand"
         end
-        greet
     end
 end
 
